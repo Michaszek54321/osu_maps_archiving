@@ -23,10 +23,15 @@ else:
     import old_list
     import archive
 
-print("[1] nowe piosenki")
+print("[1] Archive New Maps")
+print("[2] Force Archive")
+print("[3] Change Configuration")
 
-choice = str(input("wybierz"))
 
+choice = str(input("Choose: "))
+
+if choice == "1":
+    archive.add_archive()
 
 
 # print("[2] archiwizuj do folderu")

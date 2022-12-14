@@ -25,8 +25,13 @@ if len(difflist)>0:
 
 
 def Archive():
-    shutil.make_archive("%s\osu_songs"%config["path"], 'zip', config["path_to_osu"])
-    print("Done!")
+    if os.path.isfile("%s\osu_songs.zip"%config["path"]) == False:
+        shutil.make_archive("%s\osu_songs"%config["path"], 'zip', config["path_to_osu"])
+        print("Done!")
+    else:
+        os.remove("%s\osu_songs.zip"%config["path"])
+        shutil.make_archive("%s\osu_songs"%config["path"], 'zip', config["path_to_osu"])
+        print("Done!")
     return True
 #archiwizacja całego folderu
 
@@ -55,7 +60,7 @@ def add_archive():#dodaje mapy do archiwum
     else:
         print("Already done")
 
-    old_list.tworzenie(old_list.wyciaganie(path_to_osu))
+    old_list.tworzenie(old_list.wyciaganie())
     #akualizuje liste piosenek o te zarchiwizowane
     return True
 
