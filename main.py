@@ -19,32 +19,29 @@ Then I'll create first archive of your Songs Folder and that would wrap up the c
     print("Now Archiving. This might take a while depending on the number of maps in the folder")
     print("I'll inform you when it's done. Do not close the program...")
     archive.Archive()
+    time.sleep(2)
 else:
     import old_list
     import archive
 
-print("[1] Archive New Maps")
-print("[2] Force Archive")
-print("[3] Change Configuration")
 
 
-choice = str(input("Choose: "))
+def base():
+    ongoing = True
+    
+    while ongoing == True:
+        os.system("cls")
+        print("[1] Archive New Maps")
+        print("[2] Force Archive")
+        print("[3] Change Configuration")
+        print("[0] Exit")
 
-if choice == "1":
-    archive.add_archive()
+        choice = str(input("Choose: "))
 
+        if choice == "1":
+            archive.add_archive()
 
-# print("[2] archiwizuj do folderu")
-# print("[3] domyślna ścieżka")
+        if choice == "0":
+            ongoing = False
 
-
-
-
-# if choice == "2":
-#     #archive
-
-# if choice == "3":
-#     #config
-
-
-
+base()

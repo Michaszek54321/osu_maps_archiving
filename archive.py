@@ -39,6 +39,7 @@ def listdir_fullpath(d):
     return [os.path.join(d, f) for f in os.listdir(d)]
 
 def add_archive():#dodaje mapy do archiwum
+    os.system("cls")
     if AD == 0:
         print("{} maps were added".format(len(difflist)))
         print(difflist)
@@ -56,11 +57,14 @@ def add_archive():#dodaje mapy do archiwum
                     print("Archivised: ",name)
             #dodaje je do archiwum
         print("DONE!")
+        time.sleep(4)
 
     else:
         print("Already done")
+        time.sleep(1.5)
 
     old_list.tworzenie(old_list.wyciaganie())
     #akualizuje liste piosenek o te zarchiwizowane
+    
     return True
 
