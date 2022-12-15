@@ -1,4 +1,4 @@
-import configparser
+import configparser, os
 
 config = configparser.ConfigParser()
 config.add_section("config")
@@ -24,4 +24,26 @@ Example: C:\Users\barca\AppData\Local\osu!\Songs
         config.write(configfile)
 
 def change_config():
+    os.system("cls")
     print("You are changing Configuration")
+    print("[1] Set new destination path")
+    print("[2] Set new Osu! path")
+    print("[3] Show configuration")
+
+    choice = str(input("Choose: "))
+
+    if choice == "1":
+        os.system("cls")
+        choice1 = str(input("Setting new destination path: "))
+        config.set("config", "path", r"{}".format(choice1))
+
+    elif choice == "2":
+        os.system("cls")
+        choice1 = str(input("Setting new Osu! path: "))
+        config.set("config", "path", r"{}".format(choice1))
+
+    elif choice == "3":
+        os.system("cls")
+        
+    
+    

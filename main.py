@@ -40,8 +40,14 @@ def base():
 
         if choice == "1":
             archive.add_archive()
+        
+        elif choice == "2":
+            archive.Archive()
+        
+        elif choice == "3":
+            config.change_config()
 
-        if choice == "0":
+        elif choice == "0":
             ongoing = False
 
 base()
