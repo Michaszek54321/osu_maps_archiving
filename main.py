@@ -1,7 +1,7 @@
 import config
-import configparser
 import os
 import time
+import psutil
 #first configuration
 if os.path.isfile("configfile.ini") == False:
     print('''This is your first time you are running this code.
@@ -24,7 +24,16 @@ else:
     import old_list
     import archive
 
+def waiting_osu():
+    osu_process = []
+    process = filter(lambda p: p.name() == "osu!.exe", psutil.process_iter())
+    for i in process:
+        osu_process = i.pid
 
+    if len(osu_process)>0:
+        return psutil.pid_exists(osu_process)
+    else:
+        return False
 
 def base():
     ongoing = True
@@ -50,4 +59,6 @@ def base():
         elif choice == "0":
             ongoing = False
 
-base()
+#base()
+while True:
+    print(waiting_osu())
