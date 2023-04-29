@@ -43,6 +43,7 @@ def base():
         print("[1] Archive New Maps")
         print("[2] Force Archive")
         print("[3] Change Configuration")
+        print("[4] Show last changes")
         print("[0] Exit")
 
         choice = str(input("Choose: "))
@@ -59,6 +60,7 @@ def base():
         elif choice == "0":
             ongoing = False
 
-#base()
-while True:
-    print(waiting_osu())
+
+base()
+# while True:
+#     print(waiting_osu())

@@ -7,21 +7,16 @@ import configparser
 import itertools
 import time
 
-config = configparser.ConfigParser()
-config.read("configfile.ini")
-config = config["config"]
+config1 = configparser.ConfigParser()
+config1.read("configfile.ini")
+config = config1["config"]
 
 path_to_osu = config["path_to_osu"]
 oldlist = pd.read_csv("preupdate_List.csv", index_col=0)
 newlist = old_list.wyciaganie()
-AD = 1
+AD = True
 #wywołanie na górze starej listy
 #na dole aktualnej listy
-
-difflist = pd.concat([oldlist,newlist]).drop_duplicates(keep=False)
-if len(difflist)>0:
-    AD = 0
-#różnica między bazami piosenek
 
 
 def Archive():
@@ -39,8 +34,13 @@ def listdir_fullpath(d):
     return [os.path.join(d, f) for f in os.listdir(d)]
 
 def add_archive():#dodaje mapy do archiwum
+    difflist = pd.concat([oldlist,newlist]).drop_duplicates(keep=False)
+    config1.set("config", "difflist", "%s"%difflist)
+    if len(difflist)>0:
+        AD = False
+    #różnica między bazami piosenek
     os.system("cls")
-    if AD == 0:
+    if AD == False:
         print("{} maps were added".format(len(difflist)))
         print(difflist)
         print("archiving...")
@@ -58,7 +58,6 @@ def add_archive():#dodaje mapy do archiwum
             #dodaje je do archiwum
         print("DONE!")
         time.sleep(4)
-
     else:
         print("Already done")
         time.sleep(1.5)
