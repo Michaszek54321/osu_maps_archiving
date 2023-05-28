@@ -35,9 +35,14 @@ def listdir_fullpath(d):
 
 def add_archive():#dodaje mapy do archiwum
     difflist = pd.concat([oldlist,newlist]).drop_duplicates(keep=False)
-    config1.set("config", "difflist", "%s"%difflist)
+    
     if len(difflist)>0:
+        config1.set("config", "difflist", "%s"%difflist["map"].to_string(index=False))
+        with open(r"configfile.ini", 'w') as configfile:
+            config1.write(configfile)
         AD = False
+    else:
+        AD = True
     #różnica między bazami piosenek
     os.system("cls")
     if AD == False:

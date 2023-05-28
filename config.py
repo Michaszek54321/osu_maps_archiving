@@ -18,7 +18,7 @@ Example: C:\Users\barca\AppData\Local\osu!\Songs
 ''')
     config.set("config", "path_to_osu", r"{}".format(path))
 
-    
+    config.set("config", "difflist", "[]")
 
     with open(r"configfile.ini", 'w') as configfile:
         config.write(configfile)
@@ -42,6 +42,7 @@ def change_config():
         choice1 = str(input("Setting new Osu! path: "))
         config.set("config", "path", r"{}".format(choice1))
 
+    
     elif choice == "3":
         os.system("cls")
         
