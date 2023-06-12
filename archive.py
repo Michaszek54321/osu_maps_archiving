@@ -12,8 +12,7 @@ config1.read("configfile.ini")
 config = config1["config"]
 
 path_to_osu = config["path_to_osu"]
-oldlist = pd.read_csv("preupdate_List.csv", index_col=0)
-newlist = old_list.wyciaganie()
+
 AD = True
 #wywołanie na górze starej listy
 #na dole aktualnej listy
@@ -34,12 +33,16 @@ def listdir_fullpath(d):
     return [os.path.join(d, f) for f in os.listdir(d)]
 
 def add_archive():#dodaje mapy do archiwum
+    oldlist = pd.read_csv("preupdate_List.csv", index_col=0)
+    newlist = old_list.wyciaganie()
     difflist = pd.concat([oldlist,newlist]).drop_duplicates(keep=False)
     
-    if len(difflist)>0:
-        config1.set("config", "difflist", "%s"%difflist["map"].to_string(index=False))
-        with open(r"configfile.ini", 'w') as configfile:
-            config1.write(configfile)
+    if len(difflist["map"])>0:
+        with open("last changes.txt",'a+') as t: #wkładam difflist do txt
+            for i in difflist["map"]:
+                t.write("%s\n"%i)
+            t.write("\n")
+        t.close()
         AD = False
     else:
         AD = True

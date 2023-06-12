@@ -46,13 +46,8 @@ def last_changes():
     input("Press Enter to continue:")
 
 def export_last_changes():
-    c = configparser.ConfigParser()
-    c.read("configfile.ini")
-    c = c["config"]
-    t = open("last changes.txt","w")
-    t.write(c["difflist"])
     os.system("cls")
-    print("File is in this programs rolder")
+    print("File is in this programs folder")
     input("Press Enter to continue:")
 
 
